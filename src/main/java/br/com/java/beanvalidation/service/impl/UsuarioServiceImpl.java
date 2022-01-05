@@ -12,6 +12,8 @@ import static java.util.Objects.nonNull;
 import java.math.BigInteger;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 @Service
 public class UsuarioServiceImpl implements UsuarioService{
 
@@ -28,7 +30,7 @@ public class UsuarioServiceImpl implements UsuarioService{
                 throw new Exception("O cpf inserido já pertence a outro usuário.");
             }
 
-            if (nonNull(usuarioRepository.findTop1ByEmail(usuarioEntity.getCpf()))) {
+            if (nonNull(usuarioRepository.findTop1ByEmail(usuarioEntity.getEmail()))) {
                 
                 throw new Exception("O E-mail inserido já pertence a outro usuário.");
             }
@@ -49,6 +51,7 @@ public class UsuarioServiceImpl implements UsuarioService{
     }
 
     @Override
+    @Transactional
     public UsuarioEntity editar(UsuarioEntity usuarioEntity) {
         // TODO Auto-generated method stub
         return this.usuarioRepository.save(usuarioEntity);
@@ -58,7 +61,7 @@ public class UsuarioServiceImpl implements UsuarioService{
     public UsuarioEntity buscarPorId(BigInteger idUsuario) throws Exception {
         // TODO Auto-generated method stub
         Optional.ofNullable(idUsuario)
-                .orElseThrow();
+                .orElseThrow(() -> new Exception("Id não pode ser nulo"));
                 
         return this.usuarioRepository.findById(idUsuario)
                                      .orElseThrow(() -> new Exception("Cliente de id " + idUsuario + " não encontrado"));
