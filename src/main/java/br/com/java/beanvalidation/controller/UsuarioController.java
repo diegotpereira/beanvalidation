@@ -7,33 +7,47 @@ import org.springframework.web.bind.annotation.*;
 
 import br.com.java.beanvalidation.entity.UsuarioEntity;
 import br.com.java.beanvalidation.service.UsuarioService;
+import lombok.extern.slf4j.Slf4j;
 
-import org.springframework.http.HttpStatus;
 import javax.validation.Valid;
 
 @RestController
 @RequestMapping("api/v1")
+@Slf4j
 public class UsuarioController {
     
     @Autowired
     UsuarioService usuarioService;
     
 
-    @PostMapping(path = "/salvar", produces = "application/json")
-    @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity criar(@Valid @RequestBody UsuarioEntity usuarioEntity) {
-    	//log.debug("Iniciando o método");
+    @PostMapping(path = "",produces = "application/json")
+    public ResponseEntity criarNovoUsuario(@Valid @RequestBody UsuarioEntity usuarioEntity) {
+
+        log.debug("Iniciando Método.");
 
         try {
-            usuarioService.criar(usuarioEntity);
+            usuarioService.criar( usuarioEntity );
 
             return ResponseEntity.ok(usuarioEntity);
-
-        } catch (Exception e) {
-            
-           // log.debug("Erro durante o salvamento do novo usuário.");
-
-            return ResponseEntity.badRequest().body(e.getMessage());
+        }catch (Exception ee) {
+            log.debug("Erro durante o Salvamento do novo usuario.");
+            return ResponseEntity.badRequest().body(ee.getMessage());
         }
     }
+    // @ResponseStatus(HttpStatus.CREATED)
+    // public ResponseEntity criar(@Valid @RequestBody UsuarioEntity usuarioEntity) {
+    // 	//log.debug("Iniciando o método");
+
+    //     try {
+    //         usuarioService.criar(usuarioEntity);
+
+    //         return ResponseEntity.ok(usuarioEntity);
+
+    //     } catch (Exception e) {
+            
+    //        // log.debug("Erro durante o salvamento do novo usuário.");
+
+    //         return ResponseEntity.badRequest().body(e.getMessage());
+    //     }
+    // }
 }
