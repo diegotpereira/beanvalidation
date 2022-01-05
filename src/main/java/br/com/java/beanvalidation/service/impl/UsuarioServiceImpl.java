@@ -9,6 +9,9 @@ import br.com.java.beanvalidation.service.UsuarioService;
 
 import static java.util.Objects.nonNull;
 
+import java.math.BigInteger;
+import java.util.Optional;
+
 @Service
 public class UsuarioServiceImpl implements UsuarioService{
 
@@ -35,6 +38,30 @@ public class UsuarioServiceImpl implements UsuarioService{
             
         }
         return null;
+    }
+
+    @Override
+    public void deletar(BigInteger idUsuario) throws Exception {
+        // TODO Auto-generated method stub
+        this.buscarPorId(idUsuario);
+        this.usuarioRepository.deleteById(idUsuario);
+        
+    }
+
+    @Override
+    public UsuarioEntity editar(UsuarioEntity usuarioEntity) {
+        // TODO Auto-generated method stub
+        return this.usuarioRepository.save(usuarioEntity);
+    }
+
+    @Override
+    public UsuarioEntity buscarPorId(BigInteger idUsuario) throws Exception {
+        // TODO Auto-generated method stub
+        Optional.ofNullable(idUsuario)
+                .orElseThrow();
+                
+        return this.usuarioRepository.findById(idUsuario)
+                                     .orElseThrow(() -> new Exception("Cliente de id " + idUsuario + " não encontrado"));
     }
     
 }
