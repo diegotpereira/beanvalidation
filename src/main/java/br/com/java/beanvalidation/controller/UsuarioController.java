@@ -34,20 +34,4 @@ public class UsuarioController {
             return ResponseEntity.badRequest().body(ee.getMessage());
         }
     }
-    // @ResponseStatus(HttpStatus.CREATED)
-    // public ResponseEntity criar(@Valid @RequestBody UsuarioEntity usuarioEntity) {
-    // 	//log.debug("Iniciando o método");
-
-    //     try {
-    //         usuarioService.criar(usuarioEntity);
-
-    //         return ResponseEntity.ok(usuarioEntity);
-
-    //     } catch (Exception e) {
-            
-    //        // log.debug("Erro durante o salvamento do novo usuário.");
-
-    //         return ResponseEntity.badRequest().body(e.getMessage());
-    //     }
-    // }
 }
