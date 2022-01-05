@@ -1,4 +1,4 @@
-package br.com.java.entity;
+package br.com.java.beanvalidation.entity;
 
 import org.hibernate.validator.constraints.br.CPF;
 
@@ -17,7 +17,9 @@ public class UsuarioEntity {
 
 	    @NotBlank(message = "O nome não pode ser vazio.")
 	    @Size(min = 3,max = 50,message = "O nome precisar ser entre 3 a 50 caracteres")
-	    @Column(length = 50)/*Validação lado do Banco*/
+
+		/*Validação lado do Banco*/
+	    @Column(length = 50)
 	    private String nome;
 
 	    @Email

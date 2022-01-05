@@ -1,26 +1,25 @@
-package br.com.java.controller;
+package br.com.java.beanvalidation.controller;
 
-import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import br.com.java.entity.UsuarioEntity;
-import br.com.java.service.UsuarioService;
+import br.com.java.beanvalidation.entity.UsuarioEntity;
+import br.com.java.beanvalidation.service.UsuarioService;
+
 import org.springframework.http.HttpStatus;
 import javax.validation.Valid;
 
 @RestController
-// @RequestMapping("api/usuario")
 @RequestMapping("api/v1")
-@Slf4j
 public class UsuarioController {
     
-    // @Autowired(required=true)
+    @Autowired
     UsuarioService usuarioService;
     
 
-    @PostMapping("/salvar")
+    @PostMapping(path = "/salvar", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity criar(@Valid @RequestBody UsuarioEntity usuarioEntity) {
     	//log.debug("Iniciando o método");

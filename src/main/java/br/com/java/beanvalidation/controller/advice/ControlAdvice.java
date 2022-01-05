@@ -1,4 +1,4 @@
-package br.com.java.controller;
+package br.com.java.beanvalidation.controller.advice;
 
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;

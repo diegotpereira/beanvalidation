@@ -1,10 +1,12 @@
-package br.com.java.service;
+package br.com.java.beanvalidation.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.java.entity.UsuarioEntity;
-import br.com.java.repository.UsuarioRepository;
+import br.com.java.beanvalidation.entity.UsuarioEntity;
+import br.com.java.beanvalidation.repository.UsuarioRepository;
+import br.com.java.beanvalidation.service.UsuarioService;
+
 import static java.util.Objects.nonNull;
 
 @Service

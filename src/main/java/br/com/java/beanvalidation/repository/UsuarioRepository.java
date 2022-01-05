@@ -1,11 +1,13 @@
-package br.com.java.repository;
+package br.com.java.beanvalidation.repository;
 
 import java.math.BigInteger;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import br.com.java.entity.UsuarioEntity;
+import br.com.java.beanvalidation.entity.UsuarioEntity;
+
+
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<UsuarioEntity, BigInteger>{
